@@ -2003,7 +2003,7 @@
                                             </div>
                                         </div>
                                         <div class="stat-icon temp-icon" style="width: 55px; height: 55px; flex-shrink: 0;">
-                                            <img src="./data/linh.png" alt="Lính" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.3)); transform: scale(1.4);">
+                                            <img src="./data/linh.png" alt="Nhà thám hiểm" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.3)); transform: scale(1.4);">
                                         </div>
                                     </div>
                                 </div>
@@ -2033,7 +2033,7 @@
                                             </div>
                                         </div>
                                         <div class="stat-icon temp-icon" style="width: 55px; height: 55px; flex-shrink: 0;">
-                                            <img src="./data/tetuong.png" alt="Tể tướng" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.3)); transform: scale(1.4);">
+                                            <img src="./data/tetuong.png" alt="Nhà kiến tạo" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.3)); transform: scale(1.4);">
                                         </div>
                                     </div>
                                 </div>
@@ -3513,11 +3513,11 @@
 
         // Vật phẩm đổi quà
         let rewardItems = JSON.parse(localStorage.getItem('rewardItems')) || [
-            { level: 'Dân thường', itemName: 'Túi gạo', itemImage: 'https://cdn-icons-png.flaticon.com/512/2771/2771432.png', description: 'Túi gạo 5kg' },
-            { level: 'Lính', itemName: 'Bộ đồ dùng học tập', itemImage: 'https://cdn-icons-png.flaticon.com/512/2232/2232688.png', description: 'Bộ bút viết + vở' },
-            { level: 'Quan', itemName: 'Sách hay', itemImage: 'https://cdn-icons-png.flaticon.com/512/2702/2702134.png', description: 'Sách kiến thức bổ ích' },
-            { level: 'Tể tướng', itemName: 'Phiếu quà tặng', itemImage: 'https://cdn-icons-png.flaticon.com/512/3081/3081559.png', description: 'Voucher 200.000đ' },
-            { level: 'Vua', itemName: 'Học bổng', itemImage: 'https://cdn-icons-png.flaticon.com/512/2331/2331941.png', description: 'Học bổng toàn phần' }
+            { level: 'Phi hành gia tập sự', itemName: 'Túi gạo', itemImage: 'https://cdn-icons-png.flaticon.com/512/2771/2771432.png', description: 'Túi gạo 5kg' },
+            { level: 'Nhà thám hiểm', itemName: 'Bộ đồ dùng học tập', itemImage: 'https://cdn-icons-png.flaticon.com/512/2232/2232688.png', description: 'Bộ bút viết + vở' },
+            { level: 'Người tiên phong', itemName: 'Sách hay', itemImage: 'https://cdn-icons-png.flaticon.com/512/2702/2702134.png', description: 'Sách kiến thức bổ ích' },
+            { level: 'Nhà kiến tạo', itemName: 'Phiếu quà tặng', itemImage: 'https://cdn-icons-png.flaticon.com/512/3081/3081559.png', description: 'Voucher 200.000đ' },
+            { level: 'Đại sứ Vinsers', itemName: 'Học bổng', itemImage: 'https://cdn-icons-png.flaticon.com/512/2331/2331941.png', description: 'Học bổng toàn phần' }
         ];
         function saveRewardItems(){ localStorage.setItem('rewardItems', JSON.stringify(rewardItems)); }
 
@@ -3525,7 +3525,8 @@
         function getISOWeek(date) {
             const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
             const dayNum = d.getUTCDay() || 7;
-            d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+            d.setUTCD
+ate(d.getUTCDate() + 4 - dayNum);
             const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
             const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
             return { week: weekNo, year: d.getUTCFullYear() };
@@ -3763,11 +3764,11 @@
 
         // Base64 Images - Để nhúng ảnh trực tiếp vào HTML
         const base64Images = {
-            'Dân thường': '', // Thay bằng: data:image/png;base64,iVBORw0KGgo...
-            'Lính': '',
-            'Quan': '',
-            'Tể tướng': '',
-            'Vua': ''
+            'Phi hành gia tập sự': '', // Thay bằng: data:image/png;base64,iVBORw0KGgo...
+            'Nhà thám hiểm': '',
+            'Người tiên phong': '',
+            'Nhà kiến tạo': '',
+            'Đại sứ Vinsers': ''
         };
         
         function getLevelImage(levelName) {
@@ -3778,24 +3779,24 @@
             
             // Fallback về file path
             const imageMap = {
-                'Dân thường': './data/dan.png',
-                'Lính': './data/linh.png',
-                'Quan': './data/quan.png',
-                'Tể tướng': './data/tetuong.png',
-                'Vua': './data/vua.png'
+                'Phi hành gia tập sự': './data/dan.png',
+                'Nhà thám hiểm': './data/linh.png',
+                'Người tiên phong': './data/quan.png',
+                'Nhà kiến tạo': './data/tetuong.png',
+                'Đại sứ Vinsers': './data/vua.png'
             };
             return imageMap[levelName] || './data/dan.png';
         }
 
         function getLevelGradient(levelName) {
             const gradients = {
-                'Dân thường': 'linear-gradient(90deg, #95a5a6, #bdc3c7, #ecf0f1)', // Xám nhạt
-                'Lính': 'linear-gradient(90deg, #3498db, #5dade2, #85c1e9)', // Xanh dương
-                'Quan': 'linear-gradient(90deg, #9b59b6, #bb8fce, #d7bde2)', // Tím
-                'Tể tướng': 'linear-gradient(90deg, #e67e22, #f39c12, #f7dc6f)', // Cam vàng
-                'Vua': 'linear-gradient(90deg, #e74c3c, #f1948a, #fadbd8)' // Đỏ hồng
+                'Phi hành gia tập sự': 'linear-gradient(90deg, #95a5a6, #bdc3c7, #ecf0f1)', // Xám nhạt
+                'Nhà thám hiểm': 'linear-gradient(90deg, #3498db, #5dade2, #85c1e9)', // Xanh dương
+                'Người tiên phong': 'linear-gradient(90deg, #9b59b6, #bb8fce, #d7bde2)', // Tím
+                'Nhà kiến tạo': 'linear-gradient(90deg, #e67e22, #f39c12, #f7dc6f)', // Cam vàng
+                'Đại sứ Vinsers': 'linear-gradient(90deg, #e74c3c, #f1948a, #fadbd8)' // Đỏ hồng
             };
-            return gradients[levelName] || gradients['Dân thường'];
+            return gradients[levelName] || gradients['Phi hành gia tập sự'];
         }
 
         // Undo stack
@@ -3879,7 +3880,7 @@
             const now = new Date().toISOString();
             const grp = groupId === 'all' ? null : groups.find(g => String(g.id) === String(groupId));
             const targetIds = grp ? grp.studentIds : students.map(s => s.id);
-            // Ưu đãi nhóm: lấy hệ số cao nhất trong nhóm (Quan/Tể tướng/Vua), chỉ tính 1 lần
+            // Ưu đãi nhóm: lấy hệ số cao nhất trong nhóm (Quan/Nhà kiến tạo/Vua), chỉ tính 1 lần
             let groupMultiplier = 1;
             if (grp) {
                 const topMult = targetIds
@@ -5058,7 +5059,7 @@
         function updateStats() {
             const totalStudents = students.length;
             const avgPoints = totalStudents > 0 ? Math.round(students.reduce((sum, s) => sum + s.points, 0) / totalStudents) : 0;
-            const excellentStudents = students.filter(s => getCurrentLevel(s.points).name === 'Vua').length;
+            const excellentStudents = students.filter(s => getCurrentLevel(s.points).name === 'Đại sứ Vinsers').length;
             const classProgress = totalStudents > 0 ? Math.round(students.reduce((sum, s) => sum + getProgressPercentage(s.points), 0) / totalStudents) : 0;
             
             document.getElementById('totalStudents').textContent = totalStudents;
@@ -5268,11 +5269,11 @@
             console.log('updateHomeStats called');
             const totalStudents = students.length;
             const levelCounts = {
-                'Dân thường': 0,
-                'Lính': 0,
-                'Quan': 0,
-                'Tể tướng': 0,
-                'Vua': 0
+                'Phi hành gia tập sự': 0,
+                'Nhà thám hiểm': 0,
+                'Người tiên phong': 0,
+                'Nhà kiến tạo': 0,
+                'Đại sứ Vinsers': 0
             };
             
             students.forEach(student => {
@@ -5290,11 +5291,11 @@
             const kingEl = document.getElementById('kingStudents');
             
             if (totalEl) totalEl.textContent = totalStudents;
-            if (commonEl) commonEl.textContent = levelCounts['Dân thường'];
-            if (soldierEl) soldierEl.textContent = levelCounts['Lính'];
-            if (officialEl) officialEl.textContent = levelCounts['Quan'];
-            if (primeEl) primeEl.textContent = levelCounts['Tể tướng'];
-            if (kingEl) kingEl.textContent = levelCounts['Vua'];
+            if (commonEl) commonEl.textContent = levelCounts['Phi hành gia tập sự'];
+            if (soldierEl) soldierEl.textContent = levelCounts['Nhà thám hiểm'];
+            if (officialEl) officialEl.textContent = levelCounts['Người tiên phong'];
+            if (primeEl) primeEl.textContent = levelCounts['Nhà kiến tạo'];
+            if (kingEl) kingEl.textContent = levelCounts['Đại sứ Vinsers'];
         }
 
         function renderTopStudents() {
@@ -7625,7 +7626,7 @@
                     rightSection.style.display = 'block';
                 }
                 // Hiển thị top 5 học sinh và top 3 nhóm
-                document.querySelector('.members-card h3').textContent = 'Top 5 học sinh';
+                document.querySelector('.members-card h3').textContent = 'Hội đồng tinh tú';
                 renderTopStudents();
                 renderTopGroups();
                 // Hiển thị lại top 3 nhóm
